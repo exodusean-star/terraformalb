@@ -20,6 +20,15 @@ resource "aws_security_group_rule" "st1_ex_http_sg_public" {
     security_group_id = data.aws_security_group.st1_ex_http_sg.id
 }
 
+resource "aws_security_group_rule" "st1_ex_http_sg_install" {
+    type              = "ingress"
+    from_port         = 8082
+    to_port           = 8082
+    protocol          = "tcp"
+    cidr_blocks       = ["0.0.0.0/0"]
+    security_group_id = data.aws_security_group.st1_ex_http_sg.id
+}
+
 resource "aws_security_group_rule" "st1_ex_http_sg_fastapi" {
     type              = "ingress"
     from_port         = 8000

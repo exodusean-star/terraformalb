@@ -175,3 +175,46 @@ resource "aws_lb_listener_rule" "api_path_rule" {
     }
   }
 }
+
+#6. Install 대상 그룹
+resource "aws_lb_target_group" "st1_ex_install_tg" {
+    name = "st1-ex-install-tg"
+    port = 8082
+    protocol = "HTTP"
+    vpc_id = data.aws_vpc.st1_ex_vpc.id
+
+    deregistration_delay = 30
+
+    health_check {
+      path = "/install"
+      protocol = "HTTP"
+      interval = 30
+      timeout = 5
+      healthy_threshold = 2
+      unhealthy_threshold = 3
+    }
+
+    tags = { name = "st1-ex-install-tg" }
+}
+
+resource "aws_lb_target_group_attachment" "st1_ex_install_tg_attachment" {
+  target_group_arn = aws_lb_target_group.st1_ex_install_tg.arn
+  target_id = aws_instance.st1_ex_alb_instance[0].id
+  port = 8082
+}
+
+resource "aws_lb_listener_rule" "install_path_rule" {
+  listener_arn = aws_lb_listener.st1_ex_alb_https_listener.arn
+  priority = 30
+
+  action {
+    type = "forward"
+    target_group_arn = aws_lb_target_group.st1_ex_install_tg.arn
+  }
+
+  condition {
+    path_pattern {
+      values = ["/install", "/install/*"]
+    }
+  }
+}

@@ -29,6 +29,16 @@ services:
     networks:
       - board-network
 
+  # Install 서비스
+  service-install:
+    image: exodusean/nginx:1.0.0-install
+    container_name: install-nginx-container
+    restart: always
+    ports:
+      - "8082:80"
+    networks:
+      - board-network
+
 networks:
   board-network:
     driver: bridge
