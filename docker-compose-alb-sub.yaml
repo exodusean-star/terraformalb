@@ -1,0 +1,17 @@
+services:
+  # main 서비스 (Nginx)
+  service-docker-main:
+    image: exodusean/nginx:1.29.7-docker-sub
+    build:
+      context: ./sub
+      dockerfile: Dockerfile
+      platforms: ["linux/amd64", "linux/arm64"]
+    container_name: docker-main-nginx-container
+    restart: always
+    ports:
+      - "8081:80"
+    networks:
+      - board-network
+networks:
+  board-network:
+    driver: bridge

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docker Sub Service</title>
+  <style>
+    /* 기본 레이아웃 유지 */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      /* 배경을 조금 더 차가운 톤의 딥 네이비로 변경 */
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    .card {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      padding: 60px 80px;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+    /* 포인트 컬러를 Red에서 Cyan/Blue 계열로 변경 */
+    .badge {
+      display: inline-block;
+      background: #38bdf8;
+      color: #0f172a;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      /* 텍스트 그라데이션 변경 */
+      background: linear-gradient(90deg, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .info-item {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: left;
+      transition: transform 0.2s;
+    }
+    .info-item:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.08);
+    }
+    .info-item .label {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 6px;
+    }
+    .info-item .value {
+      font-size: 15px;
+      font-weight: 600;
+      color: #38bdf8;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge">Docker Sub</div>
+    <h1>Sub-Service Ready</h1>
+    <p>보조 서비스 컨테이너가 대기 중입니다.<br/>경로 기반 라우팅을 통해 연결되었습니다.</p>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="label">Service</div>
+        <div class="value">docker-sub</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Port</div>
+        <div class="value">8081 → 80</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Image</div>
+        <div class="value">nginx:1.29.7-docker-sub</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Status</div>
+        <div class="value">Standby</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
