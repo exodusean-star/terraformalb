@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Docker Main Service</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 60px 80px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .badge {
+      display: inline-block;
+      background: #e94560;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+    }
+    h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      background: linear-gradient(90deg, #e94560, #0f3460);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p {
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+    .info-item {
+      background: rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 16px 20px;
+      text-align: left;
+    }
+    .info-item .label {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-bottom: 6px;
+    }
+    .info-item .value {
+      font-size: 15px;
+      font-weight: 600;
+      color: #e94560;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge">Docker Main</div>
+    <h1>Service Running</h1>
+    <p>Nginx 컨테이너가 정상적으로 동작 중입니다.<br/>ALB를 통해 라우팅된 요청입니다.</p>
+    <div class="info-grid">
+      <div class="info-item">
+        <div class="label">Service</div>
+        <div class="value">docker-main</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Port</div>
+        <div class="value">8080 → 80</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Image</div>
+        <div class="value">nginx:1.29.7-docker-main</div>
+      </div>
+      <div class="info-item">
+        <div class="label">Network</div>
+        <div class="value">board-network</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
