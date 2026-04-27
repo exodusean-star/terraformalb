@@ -19,6 +19,16 @@ services:
     networks:
       - board-network
 
+  # FastAPI 서비스
+  service-fastapi:
+    image: exodusean/fastapi:1.0.0-api
+    container_name: fastapi-container
+    restart: always
+    ports:
+      - "8000:8000"
+    networks:
+      - board-network
+
 networks:
   board-network:
     driver: bridge
